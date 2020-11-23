@@ -14,15 +14,15 @@ class Application(Frame):
 
     def __init__(self, master):
         super(Application, self).__init__(master)
-        self.pathLbl = Label(self, text="Nie wybrano pliku gpx", bg="#3E5FA2", fg="white", font=("Calibri", 18))
+        self.pathLbl = Label(self, text="Nie wybrano pliku gpx", bg="#3E5FA2", fg="white", font=("Calibri", 12))
         self.pathBtn = Button(self, text="Wybierz plik .gpx", command=self.get_file, bg="#3E5FA2", fg="#F5AAAA",
-                              font=("Calibri", 18))
-        self.htmlLbl = Label(self, text="Wpisz nazwę pliku .html:", bg="#3E5FA2", fg="#F5AAAA", font=("Calibri", 18))
-        self.htmlEnt = Entry(self, bg="#CCFFE5", fg="#3E5FA2", font=("Calibri", 18))
+                              font=("Calibri", 12))
+        self.htmlLbl = Label(self, text="Wpisz nazwę pliku .html:", bg="#3E5FA2", fg="#F5AAAA", font=("Calibri", 12))
+        self.htmlEnt = Entry(self, bg="#CCFFE5", fg="#3E5FA2", font=("Calibri", 12))
         self.htmlEnt.insert(END, "c:/users/zs/downloads/analiza.html")
         self.okBtn = Button(self, text="Kliknij aby wyświetlić mapę", command=self.klik, bg="#3E5FA2", fg="#F5AAAA",
-                            font=("Calibri", 18))
-        self.storyTxt = Text(self, wrap=WORD, font=("Calibri", 18), bg="#3E5FA2", fg="#00FF00")
+                            font=("Calibri", 12))
+        self.storyTxt = Text(self, wrap=WORD, font=("Calibri", 12), bg="#3E5FA2", fg="#00FF00")
         self.pathBtn.grid(row=0, column=0, sticky=N + E + W + S, padx=2, pady=2)
         self.pathLbl.grid(row=0, column=1, sticky=N + E + W + S, padx=2, pady=2)
         self.htmlLbl.grid(row=1, column=0, sticky=N + E + W + S, padx=2, pady=2)
@@ -334,11 +334,21 @@ class Application(Frame):
         return "Tmax(" + str(delta_minut) + "min).:" + self.second_tempo(tSek) + "min/km\n"
 
     def __str__(self):
-        return "PODSUMOWANIE:\n" + self.start_meta() + self.time_ef_string() + self.time_pause_string() + \
-               self.distance_string() + self.speed_string() + self.tempo_string() + self.max_tempo_string(
-            1) + self.max_tempo_string(3) + \
-               self.max_tempo_string(5) + self.max_tempo_string(6) + self.max_tempo_string(7) + self.max_tempo_string(
-            15) + self.up_down() + self.max_high()
+        return "PODSUMOWANIE:\n" +\
+               self.start_meta() +\
+               self.time_ef_string() +\
+               self.time_pause_string() +\
+               self.distance_string() +\
+               self.speed_string() +\
+               self.tempo_string() +\
+               self.max_tempo_string(1) +\
+               self.max_tempo_string(3) +\
+               self.max_tempo_string(5) +\
+               self.max_tempo_string(6) +\
+               self.max_tempo_string(7) +\
+               self.max_tempo_string(15) +\
+               self.up_down() +\
+               self.max_high()
 
     def make_map_and_marker(self):
         self.fileGPX = self.pathLbl["text"]
